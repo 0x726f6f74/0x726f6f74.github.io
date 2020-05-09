@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Bing's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="0x01 背景介绍一般信息安全注重三个点！安全性和完整性，可靠性。 针对这几个点：目前用的比较的安全方式就是加密，签名。 如：各大公司采用的证书就是基于这几种方式。本次主要简单讲解rsa。 0x02 RSA介绍RSA是一种非对称密钥。被广泛用来做签名和加密。 ras长度有1024, 2048 … 0x03 RSA使用1.利用程序直接生成 123456789101112131415161718192">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-rsa">
+<meta property="og:url" content="https://0x726f6f74.github.io/2018/12/23/java-rsa/index.html">
+<meta property="og:site_name" content="Bing&#39;s blog">
+<meta property="og:description" content="0x01 背景介绍一般信息安全注重三个点！安全性和完整性，可靠性。 针对这几个点：目前用的比较的安全方式就是加密，签名。 如：各大公司采用的证书就是基于这几种方式。本次主要简单讲解rsa。 0x02 RSA介绍RSA是一种非对称密钥。被广泛用来做签名和加密。 ras长度有1024, 2048 … 0x03 RSA使用1.利用程序直接生成 123456789101112131415161718192">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545387746452&di=e53ad66a1839d725e809226f62184e94&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161224%2Fbd0f1e267b3144c192d0d5b796796ea7_th.jpg">
+<meta property="og:updated_time" content="2020-05-09T06:30:58.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-rsa">
+<meta name="twitter:description" content="0x01 背景介绍一般信息安全注重三个点！安全性和完整性，可靠性。 针对这几个点：目前用的比较的安全方式就是加密，签名。 如：各大公司采用的证书就是基于这几种方式。本次主要简单讲解rsa。 0x02 RSA介绍RSA是一种非对称密钥。被广泛用来做签名和加密。 ras长度有1024, 2048 … 0x03 RSA使用1.利用程序直接生成 123456789101112131415161718192">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545387746452&di=e53ad66a1839d725e809226f62184e94&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161224%2Fbd0f1e267b3144c192d0d5b796796ea7_th.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://0x726f6f74.github.io/2018/12/23/java-rsa/">
+
+
+
+
+
+  <title>java-rsa | Bing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everything is possible</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://0x726f6f74.github.io/2018/12/23/java-rsa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar_m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java-rsa</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T15:17:27+08:00">
+                2018-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/23/java-rsa/" class="leancloud_visitors" data-flag-title="java-rsa">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545387746452&di=e53ad66a1839d725e809226f62184e94&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161224%2Fbd0f1e267b3144c192d0d5b796796ea7_th.jpg" rel="gallery_ck9z7ljq7000qt4lv9vy04i2q" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545387746452&di=e53ad66a1839d725e809226f62184e94&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161224%2Fbd0f1e267b3144c192d0d5b796796ea7_th.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h2 id="0x01-背景介绍"><a href="#0x01-背景介绍" class="headerlink" title="0x01 背景介绍"></a>0x01 背景介绍</h2><p>一般信息安全注重三个点！安全性和完整性，可靠性。 针对这几个点：目前用的比较的安全方式就是加密，签名。 如：各大公司采用的证书就是基于这几种方式。<br>本次主要简单讲解rsa。</p>
+<h2 id="0x02-RSA介绍"><a href="#0x02-RSA介绍" class="headerlink" title="0x02 RSA介绍"></a>0x02 RSA介绍</h2><p>RSA是一种非对称密钥。被广泛用来做签名和加密。 ras长度有1024, 2048 …</p>
+<h2 id="0x03-RSA使用"><a href="#0x03-RSA使用" class="headerlink" title="0x03 RSA使用"></a>0x03 RSA使用</h2><p>1.利用程序直接生成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test.tools;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.security.*;</span><br><span class="line"><span class="keyword">import</span> java.security.interfaces.RSAPublicKey;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.PKCS8EncodedKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.RSAPublicKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.X509EncodedKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非对称加密RSA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> bing</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RSAUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 公钥加密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> publicKey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String data, PublicKey publicKey)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span><br><span class="line">        <span class="comment">//加密的数据必须为字节</span></span><br><span class="line">        <span class="keyword">return</span> Base64.getEncoder().encodeToString(cipher.doFinal(data.getBytes()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私钥解密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> privateKey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String data, PrivateKey privateKey)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = Base64.getDecoder().decode(data);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, privateKey);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(cipher.doFinal(bytes));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 签名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> privateKey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sign</span><span class="params">(String content, <span class="keyword">byte</span>[] privateKeyBytes)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//单例获取key工厂类，将拿到的privateKeyBytes创建PKCS8EncodedKeySpec对象，通过其获取PrivateKey对象</span></span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        <span class="comment">// 用key工厂对象生成私钥</span></span><br><span class="line">        PrivateKey priKey = keyFactory.generatePrivate(<span class="keyword">new</span> PKCS8EncodedKeySpec(privateKeyBytes));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取Signature对象，签名算法为SHA1WithRSA，此处还有较多可选择比如MD2withRSA/MD5withRSA/SHA1withRSA/SHA256withRSA等</span></span><br><span class="line">        Signature signature = Signature.getInstance(<span class="string">"SHA1WithRSA"</span>);</span><br><span class="line">        <span class="comment">//初始化签名</span></span><br><span class="line">        signature.initSign(priKey);</span><br><span class="line">        <span class="comment">//签名的数据必须为字节</span></span><br><span class="line">        signature.update(content.getBytes());</span><br><span class="line">        <span class="keyword">byte</span>[] encodeResult = signature.sign();</span><br><span class="line">        <span class="keyword">return</span> Base64.getEncoder().encodeToString(encodeResult);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sign</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> publicKey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String content, String sign, <span class="keyword">byte</span>[] publicKeyBytes)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = Base64.getDecoder().decode(sign);</span><br><span class="line">        <span class="comment">//单例获取key工厂类，将拿到的publicKey创建X509EncodedKeySpec对象，通过其获取PublicKey对象</span></span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        PublicKey pubKey = keyFactory.generatePublic(<span class="keyword">new</span> X509EncodedKeySpec(publicKeyBytes));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取Signature对象，签名算法为SHA1WithRSA，此处还有较多可选择比如MD2withRSA/MD5withRSA/SHA1withRSA/SHA256withRSA等</span></span><br><span class="line">        Signature signature = Signature.getInstance(<span class="string">"SHA1WithRSA"</span>);</span><br><span class="line">        signature.initVerify(pubKey);</span><br><span class="line">        signature.update( content.getBytes() );</span><br><span class="line">        <span class="keyword">boolean</span> bverify = signature.verify( bytes );</span><br><span class="line">        <span class="keyword">return</span> bverify;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成密钥对</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> KeyPair <span class="title">genKeyPair</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        keyPairGenerator.initialize(<span class="number">1024</span>);</span><br><span class="line">        <span class="keyword">return</span> keyPairGenerator.generateKeyPair();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * base64 to 公钥</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key 密钥字符串 to publickey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PublicKey <span class="title">getPublicKey</span><span class="params">(String key)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] keyBytes;</span><br><span class="line">        keyBytes = (<span class="keyword">new</span> BASE64Decoder()).decodeBuffer(key);</span><br><span class="line"></span><br><span class="line">        X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(keyBytes);</span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        PublicKey publicKey = keyFactory.generatePublic(keySpec);</span><br><span class="line">        <span class="keyword">return</span> publicKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        String data = <span class="string">"this is a securet message dfgsgdfgfgdfg"</span>;</span><br><span class="line"></span><br><span class="line">        KeyPair keyPair = genKeyPair();</span><br><span class="line">        PublicKey publicKey = keyPair.getPublic();</span><br><span class="line">        PrivateKey privateKey = keyPair.getPrivate();</span><br><span class="line">        <span class="keyword">byte</span>[] publicKeyBytes = publicKey.getEncoded();</span><br><span class="line">        <span class="keyword">byte</span>[] privateKeyBytes = privateKey.getEncoded();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 打印rsa公私密钥的modulus和exponent</span></span><br><span class="line">        RSAPublicKey publicKeyT = (RSAPublicKey) keyPair.getPublic();</span><br><span class="line">        System.out.println(<span class="string">"测试公钥 modulus："</span> + publicKeyT.getModulus().toString(<span class="number">16</span>) );   <span class="comment">//BigInteger to 16进制</span></span><br><span class="line">        System.out.println(<span class="string">"测试公钥 format:"</span> + publicKeyT.getFormat());</span><br><span class="line">        BigInteger modulus = publicKeyT.getModulus() ;</span><br><span class="line">        BigInteger publicExponent = publicKeyT.getPublicExponent();</span><br><span class="line"></span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        RSAPublicKeySpec rsaPublicKeySpec = <span class="keyword">new</span> RSAPublicKeySpec(modulus,publicExponent);</span><br><span class="line">        PublicKey publicKeyT2 = keyFactory.generatePublic(rsaPublicKeySpec);</span><br><span class="line">        <span class="keyword">byte</span>[] test = publicKeyT2.getEncoded();</span><br><span class="line">        System.out.println(<span class="string">"测试公钥："</span> + Base64.getEncoder().encodeToString( test ) );</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 测试公钥转换modulus和exponent</span></span><br><span class="line">        String t2 = <span class="string">"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu+Aq3Pa7PFYG047xTEAcFmvgFt65FAtmFMMkgL3Gl6K+3tIviClRUlKNr5W1wvJNrzB8Z2/YD9Qebc1crmAxU4CcxRNUlSBfnlKMRTqNeB9RY1tcD0TxGU6RFC3BHKudWghF0vk9U8zCG20ax9ZtncqlzNB4GthuF2haVzJhAeGYwshcK+kdyilKfuv9AfmrOgQ9HVMIPEmlWL/rE4kfvYbBLhCI1M/PZvlHXVQKHdevJiz5+0CBjpBuOkMYyK84Vl8rieS1iL6tBcCZtzVoFoMalNePwLjk4UWY2yxwNA6k655ePijRlr1jEk1RvauCcrGFt22sfP27roMRAlA+JQIDAQAB"</span>;</span><br><span class="line">        RSAPublicKey  t3 = (RSAPublicKey) getPublicKey(t2);</span><br><span class="line">        System.out.println(<span class="string">"自定义公钥 modulus："</span> + t3.getModulus().toString(<span class="number">16</span>) );   <span class="comment">//BigInteger to 16进制</span></span><br><span class="line">        System.out.println(<span class="string">"长度："</span> + t3.getModulus().toString(<span class="number">2</span>).length() );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取公，私钥，并以base64格式打印出来</span></span><br><span class="line"><span class="comment">//		System.out.println("公钥：" + Base64.getEncoder().encodeToString( publicKeyBytes ) );</span></span><br><span class="line"><span class="comment">//		System.out.println("私钥：" + Base64.getEncoder().encodeToString( privateKeyBytes ) );</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 公钥加密</span></span><br><span class="line">        System.out.println( <span class="string">"公钥的长度："</span> + publicKeyBytes.length );</span><br><span class="line">        String encryptedString = encrypt(data, publicKey);</span><br><span class="line">        System.out.println(<span class="string">"加密数据："</span> + encryptedString);</span><br><span class="line">        System.out.println(<span class="string">"加密数据长度: "</span> + encryptedString.length() );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 私钥解密</span></span><br><span class="line">        System.out.println( <span class="string">"私钥的长度："</span> + privateKeyBytes.length );</span><br><span class="line">        String decryptedString = decrypt(encryptedString, privateKey);</span><br><span class="line">        System.out.println(<span class="string">"解密数据："</span> + decryptedString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 私钥签名</span></span><br><span class="line">        String sign = sign(data, privateKeyBytes);</span><br><span class="line">        System.out.println(<span class="string">"签名："</span> + sign);</span><br><span class="line">        System.out.println(<span class="string">"签名后的数据长度："</span> + sign.length() );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 公钥验签</span></span><br><span class="line">        <span class="keyword">boolean</span> flag = verify(data, sign, publicKeyBytes);</span><br><span class="line">        System.out.println(<span class="string">"验证："</span> + flag);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* RSA 1024最大加密明文大小 :117 - 128</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.利用openssl命令直接生成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL中RSA私钥文件生成命令为：</span><br><span class="line">openssl genrsa -out private_rsa.pem 2048</span><br><span class="line"></span><br><span class="line">生成RSA公钥命令为：</span><br><span class="line">openssl rsa -in private_rsa.pem -pubout -out public_rsa.pem</span><br></pre></td></tr></table></figure>
+
+<p>3.单片机一般16进制数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">16进制密钥生成命令:</span><br><span class="line">openssl rsa -in phone_rsa_private_key.pem -text -out private.txt</span><br><span class="line"></span><br><span class="line">使用命令,可得到如下几个部分:</span><br><span class="line">RSAPrivateKey ::= SEQUENCE &#123;</span><br><span class="line">     version           Version,			//版本</span><br><span class="line">     modulus           INTEGER,  -- n   //模</span><br><span class="line">     publicExponent    INTEGER,  -- e   //公钥指数</span><br><span class="line">     privateExponent   INTEGER,  -- d   //私钥指数</span><br><span class="line">     prime1            INTEGER,  -- p</span><br><span class="line">     prime2            INTEGER,  -- q</span><br><span class="line">     exponent1         INTEGER,  -- d mod (p-1)</span><br><span class="line">     exponent2         INTEGER,  -- d mod (q-1)</span><br><span class="line">     coefficient       INTEGER,  -- (inverse of q) mod p</span><br><span class="line">     otherPrimeInfos   OtherPrimeInfos OPTIONAL</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">公钥语法为：(n, e)</span><br><span class="line">私钥语法为：(n, d)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">获取密钥的模和指数：</span><br><span class="line"># /usr/bin/python</span><br><span class="line"># encoding: utf-8</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def str2key(s):</span><br><span class="line">    # 对字符串解码</span><br><span class="line">    b_str = base64.b64decode(s)</span><br><span class="line"></span><br><span class="line">    if len(b_str) &lt; 162:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    hex_str = &apos;&apos;</span><br><span class="line"></span><br><span class="line">    # 按位转换成16进制</span><br><span class="line">    for x in b_str:</span><br><span class="line">        h = hex(ord(x))[2:]</span><br><span class="line">        h = h.rjust(2, &apos;0&apos;)</span><br><span class="line">        hex_str += h</span><br><span class="line"></span><br><span class="line">    # 找到模数和指数的开头结束位置</span><br><span class="line">    m_start = 29 * 2</span><br><span class="line">    e_start = 159 * 2</span><br><span class="line">    m_len = 128 * 2</span><br><span class="line">    e_len = 3 * 2</span><br><span class="line"></span><br><span class="line">    modulus = hex_str[m_start:m_start + m_len]</span><br><span class="line">    exponent = hex_str[e_start:e_start + e_len]</span><br><span class="line"></span><br><span class="line">    return modulus,exponent</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    pubkey = &quot;MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB&quot;</span><br><span class="line">    key = str2key(pubkey)</span><br><span class="line">    print key</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用密钥的模和指数，生成公钥及加密</span><br><span class="line">import rsa</span><br><span class="line">message = &apos;test&apos;</span><br><span class="line">modulus = int(key[0], 16)</span><br><span class="line">exponent = int(key[1], 16)</span><br><span class="line">rsa_pubkey = rsa.PublicKey(modulus, exponent)</span><br><span class="line">crypto = rsa.encrypt(message, rsa_pubkey)</span><br><span class="line">b64str = base64.b64encode(crypto)</span><br><span class="line">print b64str</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二种直接把数据的模和指数计算出来，进行格式转换。</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x04-AES加解密"><a href="#0x04-AES加解密" class="headerlink" title="0x04 AES加解密"></a>0x04 AES加解密</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">package test;</span><br><span class="line"></span><br><span class="line">import java.security.Key;</span><br><span class="line">import java.security.SecureRandom;</span><br><span class="line">import java.util.Base64;</span><br><span class="line"></span><br><span class="line">import javax.crypto.Cipher;</span><br><span class="line">import javax.crypto.KeyGenerator;</span><br><span class="line">import javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class DemoAESUtil &#123;</span><br><span class="line">		/**</span><br><span class="line">		 * 加密</span><br><span class="line">		 * @param str</span><br><span class="line">		 * @param key</span><br><span class="line">		 * @return</span><br><span class="line">		 * @throws Exception</span><br><span class="line">		 */</span><br><span class="line">		public static String encrypt(String str, String key) throws Exception &#123;</span><br><span class="line">			Cipher cipher = Cipher.getInstance(&quot;AES&quot;);</span><br><span class="line">			cipher.init(Cipher.ENCRYPT_MODE, generateKey(key));</span><br><span class="line">			byte[] bytes = cipher.doFinal(str.getBytes());</span><br><span class="line"></span><br><span class="line">			return Base64.getEncoder().encodeToString(bytes);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		/**</span><br><span class="line">		 * 解密</span><br><span class="line">		 * @param str</span><br><span class="line">		 * @param key</span><br><span class="line">		 * @return</span><br><span class="line">		 * @throws Exception</span><br><span class="line">		 */</span><br><span class="line">		public static String decrypt(String str, String key) throws Exception &#123;</span><br><span class="line">			byte[] bytes = Base64.getDecoder().decode(str);</span><br><span class="line">			Cipher cipher = Cipher.getInstance(&quot;AES&quot;);</span><br><span class="line">			cipher.init(Cipher.DECRYPT_MODE, generateKey(key));</span><br><span class="line">			return new String(cipher.doFinal(bytes));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		/**</span><br><span class="line">		 * 生成key</span><br><span class="line">		 * @param key</span><br><span class="line">		 * @return</span><br><span class="line">		 * @throws Exception</span><br><span class="line">		 */</span><br><span class="line">		private static Key generateKey(String key) throws Exception &#123;</span><br><span class="line">			KeyGenerator keyGenerator = KeyGenerator.getInstance(&quot;AES&quot;);</span><br><span class="line">			keyGenerator.init(128, new SecureRandom(key.getBytes())); // 密钥长度 128/192/256</span><br><span class="line">			return new SecretKeySpec(keyGenerator.generateKey().getEncoded(), &quot;AES&quot;);  </span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">			String str = &quot;hello world&quot;;</span><br><span class="line">			String key = &quot;password&quot;;</span><br><span class="line">			</span><br><span class="line">			// 加密</span><br><span class="line">			String encryptedString = encrypt(str, key);</span><br><span class="line">			System.out.println(&quot;加密后：&quot; + encryptedString);</span><br><span class="line"></span><br><span class="line">			// 解密</span><br><span class="line">			String decryptedString = decrypt(encryptedString, key);</span><br><span class="line">			System.out.println(&quot;解密后：&quot; + new String(decryptedString));</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x05-其它编码"><a href="#0x05-其它编码" class="headerlink" title="0x05 其它编码"></a>0x05 其它编码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.serializer.SerializerFeature;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XstormEncode</span> </span>&#123;</span><br><span class="line">    <span class="comment">// unicode转中文</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">unicodeToString</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        String[] split = s.split(<span class="string">"\\\\"</span>);</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; split.length ; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (split[i].startsWith(<span class="string">"u"</span>))&#123;</span><br><span class="line">                builder.append((<span class="keyword">char</span>) Integer.parseInt(split[i].substring(<span class="number">1</span>,<span class="number">5</span>), <span class="number">16</span>));</span><br><span class="line">                <span class="keyword">if</span>(split[i].length()&gt;<span class="number">5</span>)&#123;</span><br><span class="line">                    builder.append(split[i].substring(<span class="number">5</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                builder.append(split[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 中文字符转unicode</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">stringToUnicode</span><span class="params">(String unicode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] chars = unicode.toCharArray();</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length ; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chars[i]&gt;= <span class="number">0</span> &amp;&amp; chars[i]&lt;=<span class="number">127</span>)&#123;</span><br><span class="line">                builder.append(chars[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                builder.append(<span class="string">"\\u"</span>);</span><br><span class="line">                String hx = Integer.toString(chars[i], <span class="number">16</span>);</span><br><span class="line">                <span class="keyword">if</span> (hx.length()&lt;<span class="number">4</span>)&#123;</span><br><span class="line">                    builder.append(<span class="string">"0000"</span>.substring(hx.length())).append(hx);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    builder.append(hx);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        return builder.toString();</span></span><br><span class="line">        <span class="comment">// 方式2</span></span><br><span class="line">        <span class="keyword">return</span> JSON.toJSONString(unicode, SerializerFeature.BrowserCompatible);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 字符转base64</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">bs64Encode</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  Base64.getEncoder().encodeToString( str.getBytes());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// base64转字符</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  String <span class="title">bs64Decode</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = Base64.getDecoder().decode( str );</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> String(bytes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取类型方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o.getClass().toString();      <span class="comment">//使用Object类型的getClass()方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:bytes2HexString</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字节数组转16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">bytes2HexString</span><span class="params">(<span class="keyword">byte</span>[] b)</span> </span>&#123;</span><br><span class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">            result.append(String.format(<span class="string">"%02X"</span>,b[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexString2Bytes</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制字符串转字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] hexString2Bytes(String src) &#123;</span><br><span class="line">        <span class="keyword">int</span> l = src.length() / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] ret = <span class="keyword">new</span> <span class="keyword">byte</span>[l];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; i++) &#123;</span><br><span class="line">            ret[i] = Integer.valueOf(src.substring(i * <span class="number">2</span>, i * <span class="number">2</span> + <span class="number">2</span>), <span class="number">16</span>).byteValue();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:string2HexUTF8</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字符UTF8串转16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strPart</span></span><br><span class="line"><span class="comment">     * 字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">string2HexUTF8</span><span class="params">(String strPart)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> string2HexString(strPart,<span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:string2HexUTF8</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字符UTF-16LE串转16进制字符串,此UTF-16LE等同于C#中的Unicode</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strPart</span></span><br><span class="line"><span class="comment">     * 字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">string2HexUTF16LE</span><span class="params">(String strPart)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> string2HexString(strPart,<span class="string">"UTF-16LE"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:string2HexUnicode</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字符Unicode串转16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strPart</span></span><br><span class="line"><span class="comment">     * 字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">string2HexUnicode</span><span class="params">(String strPart)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> string2HexString(strPart,<span class="string">"Unicode"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:string2HexGBK</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字符GBK串转16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strPart</span></span><br><span class="line"><span class="comment">     * 字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">string2HexGBK</span><span class="params">(String strPart)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> string2HexString(strPart,<span class="string">"GBK"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:string2HexString</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:字符串转16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strPart 字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> tochartype hex目标编码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">string2HexString</span><span class="params">(String strPart,String tochartype)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> bytes2HexString(strPart.getBytes(tochartype));</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///////////////////////////////////////////////////</span></span><br><span class="line">    <span class="comment">/////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexUTF82String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制UTF-8字符串转字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexUTF82String</span><span class="params">(String src)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hexString2String(src,<span class="string">"UTF-8"</span>,<span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexUTF16LE2String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制UTF-8字符串转字符串，,此UTF-16LE等同于C#中的Unicode</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexUTF16LE2String</span><span class="params">(String src)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hexString2String(src,<span class="string">"UTF-16LE"</span>,<span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexGBK2String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制GBK字符串转字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexGBK2String</span><span class="params">(String src)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hexString2String(src,<span class="string">"GBK"</span>,<span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexUnicode2String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制Unicode字符串转字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexUnicode2String</span><span class="params">(String src)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hexString2String(src,<span class="string">"Unicode"</span>,<span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span>:hexString2String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>:16进制字符串转字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * 16进制字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexString2String</span><span class="params">(String src,String oldchartype, String chartype)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bts=hexString2Bytes(src);</span><br><span class="line">        <span class="keyword">try</span>&#123;<span class="keyword">if</span>(oldchartype.equals(chartype))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(bts,oldchartype);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">new</span> String(bts,oldchartype).getBytes(),chartype);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span><span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/ghyg525/util_java_safe" target="_blank" rel="noopener">https://github.com/ghyg525/util_java_safe</a><br><a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc5246</a> –ssl<br><a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="Bing 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://0x726f6f74.github.io/2018/12/23/java-rsa/" title="java-rsa">https://0x726f6f74.github.io/2018/12/23/java-rsa/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href rel="external nofollow" target="_blank"></a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/20/env-git使用/" rel="next" title="env-git使用">
+                <i class="fa fa-chevron-left"></i> env-git使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/26/project-代码审计/" rel="prev" title="project-代码审计">
+                project-代码审计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTcyNS8xNjI1Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar_m.jpg" alt="Bing">
+            
+              <p class="site-author-name" itemprop="name">Bing</p>
+              <p class="site-description motion-element" itemprop="description">web & binary & dev.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/0xbing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/xstormbing" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-背景介绍"><span class="nav-number">1.</span> <span class="nav-text">0x01 背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-RSA介绍"><span class="nav-number">2.</span> <span class="nav-text">0x02 RSA介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-RSA使用"><span class="nav-number">3.</span> <span class="nav-text">0x03 RSA使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-AES加解密"><span class="nav-number">4.</span> <span class="nav-text">0x04 AES加解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-其它编码"><span class="nav-number">5.</span> <span class="nav-text">0x05 其它编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">无痕</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info"> 技术 &mdash; 从来不会停下脚步</div>
+
+
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66553828";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("U7exMAQ1lNj4ICGMDPFnDgaw-gzGzoHsz", "DSdIdzWc8Mw1kIzGFNUTCPi6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
