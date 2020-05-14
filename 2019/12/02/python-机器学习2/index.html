@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ml,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Bing's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="基础知识几个基本概念基本流程 特征，特征向量，特征空间，假设空间 机器学习实质：就是在假设空间中去搜索一个适合当前数据的假设 机器学习方法的三要素 模型 策略 经验风险与结构风险损失函数 经验风险 经验风险问题 结构风险 正则化项 范数 模型评估与选择 了解模型选择的原则误差误差：模型的预测值与真实值之间的差异训练：通过已知的样本数据学习，从而得到模型的过程训练误差：模型作用于训练集时的误差泛化：">
+<meta name="keywords" content="ml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习2-算法详解">
+<meta property="og:url" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/index.html">
+<meta property="og:site_name" content="Bing&#39;s blog">
+<meta property="og:description" content="基础知识几个基本概念基本流程 特征，特征向量，特征空间，假设空间 机器学习实质：就是在假设空间中去搜索一个适合当前数据的假设 机器学习方法的三要素 模型 策略 经验风险与结构风险损失函数 经验风险 经验风险问题 结构风险 正则化项 范数 模型评估与选择 了解模型选择的原则误差误差：模型的预测值与真实值之间的差异训练：通过已知的样本数据学习，从而得到模型的过程训练误差：模型作用于训练集时的误差泛化：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/52BEAFCF-1A20-4F89-950A-9E50CD549D47.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/AEC7033D-55DD-47D0-BCE7-429368BBE838.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/6B538A34-362C-4541-AED0-DA0BE397B857.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/32D561BE-BCE7-4325-896F-B079320F882A.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/0849BA43-A36C-4614-A397-E5EDE8B08D1A.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/E8837BBA-D9C4-402C-8EA5-77F44D688188.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/1960650A-07AF-467E-95F6-32D5134D11CC.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/47EF2A20-8357-444B-AB53-B50947D7ACD1.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/B4684802-97C0-4677-8DFC-04D294A676A9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/F0E3F0FC-F1B2-417C-AA6A-3245DE7B81E1.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/AD518A6B-3B59-4B98-B663-36A568D044BC.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/C5E3DFCC-3F2E-4CF1-BA12-3D9258945008.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/B4D0A038-CF7A-4E56-B056-41A6A1558BFE.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/CC7572EB-E94D-4D13-AAC0-D2CF7649F4D9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/DE928E96-EC0B-4294-8548-61ACF3F2CD67.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/D41F4D9F-DE56-46BB-82CA-617317CCF984.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/12C7ECDE-5D3C-4923-9B14-970C5AA8C352.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/05E5C8B5-AE33-4E10-9A93-A9B3C68103B5.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/411CDC1B-8AE8-4130-96A7-8F3D9A9DBD0D.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/729451DD-AB43-45FD-9D42-B4E6066F6A13.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/E1C34930-B61D-4CC2-9C9B-F8EBE12EF788.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/29BADAFD-900D-4405-80C7-48ED356825DD.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/75A449D2-8BDE-4AE6-9895-83BD8D95935B.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/29E15988-A631-4504-A57E-709082912E3B.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/5FB62AE6-9523-4667-94D5-D15DEAEB4325.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/CF8E64AC-B3CB-454A-9A62-BD9909DB70F5.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/6F5D36A3-2A50-40CA-A4AE-2E395B6E885B.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/8EA1AB35-D3D3-46BA-9EFB-C57943B50B7E.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/F0582DF0-6CB6-4738-AC6C-00997B2398DF.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/DC8DA6FF-DBE4-4AE4-89EC-986F6E2616AA.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/2293E542-0383-4350-9748-39CA34D4BAC8.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/E5C0D0FC-3867-466E-8CC2-2ED27654C631.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/29A95EE9-540F-4DFB-8067-572B3C28CBB4.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/766574F6-FED8-45CF-8EDF-C7BE1F91D5A0.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/02B95B07-8C28-42ED-93D4-030F4B60B484.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/A62CA471-0B56-43A1-8548-C7FFFE0F23EB.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/E58487BC-AC9F-4DDC-B464-11F2501B5FD9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/710A8319-4743-4D0C-954D-8532B8FD2868.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/669C95FF-2A30-40CC-B0E9-A8F49D322DF9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/19898464-737C-484B-97E3-8E99A4AD27D6.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/36141AED-C97A-4CD5-A732-1FD3BC4DE6A0.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/3532CE0C-8EB9-4774-BC81-3552AFE8C8D3.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/64BF0663-E07C-4585-B7BF-7D027F8CCD72.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/ADB14405-4486-4312-9141-6E8F359FCF4F.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/A7B26955-AC14-44C0-A22D-ED041EE0D05A.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/4E079F60-2E0A-4626-889F-1E5588E87B6C.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/DDDDED75-58BA-4CAB-B5C5-0AA30D91E29A.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/B3085E48-C612-44C0-9100-F6E1A8991929.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/A2557C2A-0CAD-4C99-B232-8BB221CDD1A9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/2C9726BB-DF6E-4B9D-B3D3-DAC109DA19AF.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/903B3B18-FDD6-492E-B225-A9F4A8F5B680.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/A583C583-DA02-4551-9274-D39346E99FA5.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/79557CA4-CF3E-4B11-947C-557C79E4E4B2.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/1D9F312A-D27C-462D-9454-4C7F05B4CA09.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/39C8014D-0180-439D-BCFC-A376D6CF7EB3.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/632651FC-9CEA-45E0-B9E9-FDB5FD4E63D2.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/67DFC7B7-63D6-4CA5-B3DC-8E2DF8193B13.png">
+<meta property="og:updated_time" content="2020-05-14T02:39:55.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习2-算法详解">
+<meta name="twitter:description" content="基础知识几个基本概念基本流程 特征，特征向量，特征空间，假设空间 机器学习实质：就是在假设空间中去搜索一个适合当前数据的假设 机器学习方法的三要素 模型 策略 经验风险与结构风险损失函数 经验风险 经验风险问题 结构风险 正则化项 范数 模型评估与选择 了解模型选择的原则误差误差：模型的预测值与真实值之间的差异训练：通过已知的样本数据学习，从而得到模型的过程训练误差：模型作用于训练集时的误差泛化：">
+<meta name="twitter:image" content="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/52BEAFCF-1A20-4F89-950A-9E50CD549D47.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/">
+
+
+
+
+
+  <title>机器学习2-算法详解 | Bing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everything is possible</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar_m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习2-算法详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T12:58:55+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/02/python-机器学习2/" class="leancloud_visitors" data-flag-title="机器学习2-算法详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="几个基本概念"><a href="#几个基本概念" class="headerlink" title="几个基本概念"></a>几个基本概念</h3><p>基本流程<br><img src="52BEAFCF-1A20-4F89-950A-9E50CD549D47.png" alt="1ce4d6cbab75466a1d71200663711ad7"></p>
+<p>特征，特征向量，特征空间，假设空间</p>
+<p>机器学习实质：就是在假设空间中去搜索一个适合当前数据的假设</p>
+<h3 id="机器学习方法的三要素"><a href="#机器学习方法的三要素" class="headerlink" title="机器学习方法的三要素"></a>机器学习方法的三要素</h3><p><img src="AEC7033D-55DD-47D0-BCE7-429368BBE838.png" alt="9fadb1ede44161d0dcee438d965ce3ed"></p>
+<p>模型<br><img src="6B538A34-362C-4541-AED0-DA0BE397B857.png" alt="1169b955adca673c33e80d056c881236"></p>
+<p>策略<br><img src="32D561BE-BCE7-4325-896F-B079320F882A.png" alt="3adbfe38e19177809d3dcc3c17c72c82"></p>
+<h3 id="经验风险与结构风险"><a href="#经验风险与结构风险" class="headerlink" title="经验风险与结构风险"></a>经验风险与结构风险</h3><p>损失函数<br><img src="0849BA43-A36C-4614-A397-E5EDE8B08D1A.png" alt="5b1be0ec70e039251829ad263aeb66fe"></p>
+<p>经验风险<br><img src="E8837BBA-D9C4-402C-8EA5-77F44D688188.png" alt="6126782f17c679805841de0d469e6b73"></p>
+<p>经验风险问题<br><img src="1960650A-07AF-467E-95F6-32D5134D11CC.png" alt="1b7eb694f609219c952f9795ca5c6e72"></p>
+<p>结构风险<br><img src="47EF2A20-8357-444B-AB53-B50947D7ACD1.png" alt="afc19882dee43af2a03a142fa726ecef"></p>
+<h3 id="正则化项"><a href="#正则化项" class="headerlink" title="正则化项"></a>正则化项</h3><p><img src="B4684802-97C0-4677-8DFC-04D294A676A9.png" alt="d0d6847d7c4e1c8bd7007a4d8bfc61b6"></p>
+<h3 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h3><p><img src="F0E3F0FC-F1B2-417C-AA6A-3245DE7B81E1.png" alt="d3c869ed495ddc1c113207d3af812b8d"><br><img src="AD518A6B-3B59-4B98-B663-36A568D044BC.png" alt="eef133c0845cfceef5ae4c570dc97077"></p>
+<h2 id="模型评估与选择"><a href="#模型评估与选择" class="headerlink" title="模型评估与选择"></a>模型评估与选择</h2><p><img src="C5E3DFCC-3F2E-4CF1-BA12-3D9258945008.png" alt="bf462b276f4c1a87a3c3fa09a8d9a495"></p>
+<h3 id="了解模型选择的原则"><a href="#了解模型选择的原则" class="headerlink" title="了解模型选择的原则"></a>了解模型选择的原则</h3><h4 id="误差"><a href="#误差" class="headerlink" title="误差"></a>误差</h4><p>误差：模型的预测值与真实值之间的差异<br>训练：通过已知的样本数据学习，从而得到模型的过程<br>训练误差：模型作用于训练集时的误差<br>泛化：由具体的、个别的扩大为一般的，即从特殊都一般，称为泛化。对机器学习的模型来讲，泛化是指模型作用于新的样本数据（非训练集）<br>泛化误差：模型作用于新的样本数据时的误差</p>
+<h4 id="欠拟合和过拟合"><a href="#欠拟合和过拟合" class="headerlink" title="欠拟合和过拟合"></a>欠拟合和过拟合</h4><p><img src="B4D0A038-CF7A-4E56-B056-41A6A1558BFE.png" alt="87abd6f2ec20ca9fcfbf6757d7b7c3df"></p>
+<h4 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h4><p><img src="CC7572EB-E94D-4D13-AAC0-D2CF7649F4D9.png" alt="91a495cbdd3599753a9938a42becdda6"></p>
+<h3 id="掌握交叉验证法评估模型"><a href="#掌握交叉验证法评估模型" class="headerlink" title="掌握交叉验证法评估模型"></a>掌握交叉验证法评估模型</h3><h4 id="评估思路"><a href="#评估思路" class="headerlink" title="评估思路"></a>评估思路</h4><p><img src="DE928E96-EC0B-4294-8548-61ACF3F2CD67.png" alt="f9f340ef55dc81230fc2fb5301d13da2"></p>
+<h4 id="留出法"><a href="#留出法" class="headerlink" title="留出法"></a>留出法</h4><p><img src="D41F4D9F-DE56-46BB-82CA-617317CCF984.png" alt="deae9a9fc774fa0da3c024a23f124c82"></p>
+<h4 id="交叉验证法"><a href="#交叉验证法" class="headerlink" title="交叉验证法"></a>交叉验证法</h4><p><img src="12C7ECDE-5D3C-4923-9B14-970C5AA8C352.png" alt="7d7a8a71b24956ffabd9853ed4c39349"></p>
+<h4 id="留一法"><a href="#留一法" class="headerlink" title="留一法"></a>留一法</h4><p><img src="05E5C8B5-AE33-4E10-9A93-A9B3C68103B5.png" alt="ca8fd2ebc8c6389a6220c93e28c307f7"></p>
+<h4 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h4><p><img src="411CDC1B-8AE8-4130-96A7-8F3D9A9DBD0D.png" alt="df2c9a660008c00b16fe46d7c48f0b50"></p>
+<h4 id="几种方法适用模型"><a href="#几种方法适用模型" class="headerlink" title="几种方法适用模型"></a>几种方法适用模型</h4><p><img src="729451DD-AB43-45FD-9D42-B4E6066F6A13.png" alt="6495d6164aa89ce0833826406af83ec6"><br><img src="E1C34930-B61D-4CC2-9C9B-F8EBE12EF788.png" alt="550e3bc281a9f34716b7a4d764f7c4ef"></p>
+<h3 id="熟悉常见模型的性能指标"><a href="#熟悉常见模型的性能指标" class="headerlink" title="熟悉常见模型的性能指标"></a>熟悉常见模型的性能指标</h3><p><img src="29BADAFD-900D-4405-80C7-48ED356825DD.png" alt="8576bc77a0ee88ee436454585bd76904"></p>
+<p>分类算法的性能度量<br><img src="75A449D2-8BDE-4AE6-9895-83BD8D95935B.png" alt="922e3e94e41de044984803817f91f269"></p>
+<p>聚类算法的性能度量<br><img src="29E15988-A631-4504-A57E-709082912E3B.png" alt="ad08b94ac60f6b1428fa860409bae4c5"></p>
+<h3 id="了解模型评估的误差与方差"><a href="#了解模型评估的误差与方差" class="headerlink" title="了解模型评估的误差与方差"></a>了解模型评估的误差与方差</h3><p><img src="5FB62AE6-9523-4667-94D5-D15DEAEB4325.png" alt="31aa11ca519dcb68ae382a9bb97a21a0"></p>
+<h4 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h4><p><img src="CF8E64AC-B3CB-454A-9A62-BD9909DB70F5.png" alt="0942c52f4c942831606c68837c4e58ae"></p>
+<h4 id="假设检验过程"><a href="#假设检验过程" class="headerlink" title="假设检验过程"></a>假设检验过程</h4><p><img src="6F5D36A3-2A50-40CA-A4AE-2E395B6E885B.png" alt="adef6c1f7f6613a9c6d4c6fcf481cdbb"><br><img src="8EA1AB35-D3D3-46BA-9EFB-C57943B50B7E.png" alt="19e0163a91c2de35aa0e1c794af0cf9f"><br><img src="F0582DF0-6CB6-4738-AC6C-00997B2398DF.png" alt="929edea92aba519a8b9a11dc50052cab"><br><img src="DC8DA6FF-DBE4-4AE4-89EC-986F6E2616AA.png" alt="dbbd0c52e735620d4499402bb01dd5cb"><br><img src="2293E542-0383-4350-9748-39CA34D4BAC8.png" alt="7d27ae0040bdeba4548cf0a03812fdfb"></p>
+<p>例子<br><img src="E5C0D0FC-3867-466E-8CC2-2ED27654C631.png" alt="eddc52b3473690aef3661bfb8d7d7ca4"></p>
+<h4 id="偏差，方差与噪声"><a href="#偏差，方差与噪声" class="headerlink" title="偏差，方差与噪声"></a>偏差，方差与噪声</h4><p><img src="29A95EE9-540F-4DFB-8067-572B3C28CBB4.png" alt="1aea1dfc386dbb37a1c9bcdcbdd892f3"></p>
+<p><img src="766574F6-FED8-45CF-8EDF-C7BE1F91D5A0.png" alt="348fe39e6c8f29f814113c5ab256cf56"></p>
+<h4 id="泛化误差的推导"><a href="#泛化误差的推导" class="headerlink" title="泛化误差的推导"></a>泛化误差的推导</h4><p><img src="02B95B07-8C28-42ED-93D4-030F4B60B484.png" alt="513dfed1b5b45d007ef9285a04f7d030"></p>
+<h2 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h2><p><img src="A62CA471-0B56-43A1-8548-C7FFFE0F23EB.png" alt="41405ebd5f85e557558d40b53134276b"></p>
+<h3 id="回归的定义"><a href="#回归的定义" class="headerlink" title="回归的定义"></a>回归的定义</h3><p><img src="E58487BC-AC9F-4DDC-B464-11F2501B5FD9.png" alt="bd218dfa4d1230258dd5de6e79b6edbd"></p>
+<h3 id="线性与非线性"><a href="#线性与非线性" class="headerlink" title="线性与非线性"></a>线性与非线性</h3><p><img src="710A8319-4743-4D0C-954D-8532B8FD2868.png" alt="b09474bcc32c1e1dd294342ba3e9ab0d"></p>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p><img src="669C95FF-2A30-40CC-B0E9-A8F49D322DF9.png" alt="545a5183ad54a00a5447ac335063d385"></p>
+<p><img src="19898464-737C-484B-97E3-8E99A4AD27D6.png" alt="8411d1995c264a923b567cf4da8064d4"></p>
+<h3 id="几个基本假设"><a href="#几个基本假设" class="headerlink" title="几个基本假设"></a>几个基本假设</h3><p><img src="36141AED-C97A-4CD5-A732-1FD3BC4DE6A0.png" alt="8415bbfa19b53690ac1b06f72b688b4b"></p>
+<h3 id="建立回归模型流程"><a href="#建立回归模型流程" class="headerlink" title="建立回归模型流程"></a>建立回归模型流程</h3><p><img src="3532CE0C-8EB9-4774-BC81-3552AFE8C8D3.png" alt="067c3958545bde2932f4264f042577bb"><br><img src="64BF0663-E07C-4585-B7BF-7D027F8CCD72.png" alt="45ffce426f1b3ef78ac071dc09399236"><br><img src="ADB14405-4486-4312-9141-6E8F359FCF4F.png" alt="6edd54cea0dda2449756e5763e11dfd8"><br><img src="A7B26955-AC14-44C0-A22D-ED041EE0D05A.png" alt="5d7af8302e8d1141eec00d5bb426feb5"><br><img src="4E079F60-2E0A-4626-889F-1E5588E87B6C.png" alt="3094528d454f07905d6f440e4290e5e6"><br><img src="DDDDED75-58BA-4CAB-B5C5-0AA30D91E29A.png" alt="b8c2729fd51d7820ae9d035328dc74f6"><br><img src="B3085E48-C612-44C0-9100-F6E1A8991929.png" alt="a5e4e968210bb4fa43590d3643ab8c2f"><br><img src="A2557C2A-0CAD-4C99-B232-8BB221CDD1A9.png" alt="1b31d68b30f1a94f33f4d534503d9475"></p>
+<h3 id="回归模型的特点"><a href="#回归模型的特点" class="headerlink" title="回归模型的特点"></a>回归模型的特点</h3><p><img src="2C9726BB-DF6E-4B9D-B3D3-DAC109DA19AF.png" alt="4e38b04dc632b049189e7aa917857e4b"></p>
+<h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2><p><img src="903B3B18-FDD6-492E-B225-A9F4A8F5B680.png" alt="d7c4a18d183a42f422bb906fbb5210af"></p>
+<h3 id="一元线性回归模型"><a href="#一元线性回归模型" class="headerlink" title="一元线性回归模型"></a>一元线性回归模型</h3><p><img src="A583C583-DA02-4551-9274-D39346E99FA5.png" alt="e28cf765a6610e5513252a000000ec30"></p>
+<h3 id="最小二乘估计"><a href="#最小二乘估计" class="headerlink" title="最小二乘估计"></a>最小二乘估计</h3><p><img src="79557CA4-CF3E-4B11-947C-557C79E4E4B2.png" alt="b3bd13afef24b158c44141fd2ead8c49"></p>
+<h3 id="最大似然估计"><a href="#最大似然估计" class="headerlink" title="最大似然估计"></a>最大似然估计</h3><p><img src="1D9F312A-D27C-462D-9454-4C7F05B4CA09.png" alt="0018dd3c7fdb123f10da0f78965a6f69"></p>
+<h3 id="有偏估计与无偏估计"><a href="#有偏估计与无偏估计" class="headerlink" title="有偏估计与无偏估计"></a>有偏估计与无偏估计</h3><p><img src="39C8014D-0180-439D-BCFC-A376D6CF7EB3.png" alt="212c5d9adc8243809f03d571ef142b97"><br><img src="632651FC-9CEA-45E0-B9E9-FDB5FD4E63D2.png" alt="fd7d3551798e1e154606793cd8580403"></p>
+<p>各种检验方法：t, f检验等<br><img src="67DFC7B7-63D6-4CA5-B3DC-8E2DF8193B13.png" alt="39409372639d71bf657857d44e0d310c"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="Bing 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://0x726f6f74.github.io/2019/12/02/python-机器学习2/" title="机器学习2-算法详解">https://0x726f6f74.github.io/2019/12/02/python-机器学习2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href rel="external nofollow" target="_blank"></a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/27/python-机器学习1/" rel="next" title="机器学习1-概览及常用算法">
+                <i class="fa fa-chevron-left"></i> 机器学习1-概览及常用算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/08/python-机器学习4/" rel="prev" title="机器学习4-tesorflow入门">
+                机器学习4-tesorflow入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTcyNS8xNjI1Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar_m.jpg" alt="Bing">
+            
+              <p class="site-author-name" itemprop="name">Bing</p>
+              <p class="site-description motion-element" itemprop="description">web & binary & dev.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/0xbing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/xstormbing" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">几个基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习方法的三要素"><span class="nav-number">1.2.</span> <span class="nav-text">机器学习方法的三要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经验风险与结构风险"><span class="nav-number">1.3.</span> <span class="nav-text">经验风险与结构风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化项"><span class="nav-number">1.4.</span> <span class="nav-text">正则化项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-number">1.5.</span> <span class="nav-text">范数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估与选择"><span class="nav-number">2.</span> <span class="nav-text">模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解模型选择的原则"><span class="nav-number">2.1.</span> <span class="nav-text">了解模型选择的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差"><span class="nav-number">2.1.1.</span> <span class="nav-text">误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合和过拟合"><span class="nav-number">2.1.2.</span> <span class="nav-text">欠拟合和过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型选择"><span class="nav-number">2.1.3.</span> <span class="nav-text">模型选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掌握交叉验证法评估模型"><span class="nav-number">2.2.</span> <span class="nav-text">掌握交叉验证法评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#评估思路"><span class="nav-number">2.2.1.</span> <span class="nav-text">评估思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#留出法"><span class="nav-number">2.2.2.</span> <span class="nav-text">留出法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证法"><span class="nav-number">2.2.3.</span> <span class="nav-text">交叉验证法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#留一法"><span class="nav-number">2.2.4.</span> <span class="nav-text">留一法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自助法"><span class="nav-number">2.2.5.</span> <span class="nav-text">自助法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几种方法适用模型"><span class="nav-number">2.2.6.</span> <span class="nav-text">几种方法适用模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#熟悉常见模型的性能指标"><span class="nav-number">2.3.</span> <span class="nav-text">熟悉常见模型的性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解模型评估的误差与方差"><span class="nav-number">2.4.</span> <span class="nav-text">了解模型评估的误差与方差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设检验"><span class="nav-number">2.4.1.</span> <span class="nav-text">假设检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设检验过程"><span class="nav-number">2.4.2.</span> <span class="nav-text">假设检验过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差，方差与噪声"><span class="nav-number">2.4.3.</span> <span class="nav-text">偏差，方差与噪声</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛化误差的推导"><span class="nav-number">2.4.4.</span> <span class="nav-text">泛化误差的推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归分析"><span class="nav-number">3.</span> <span class="nav-text">回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归的定义"><span class="nav-number">3.1.</span> <span class="nav-text">回归的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性与非线性"><span class="nav-number">3.2.</span> <span class="nav-text">线性与非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">3.3.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个基本假设"><span class="nav-number">3.4.</span> <span class="nav-text">几个基本假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立回归模型流程"><span class="nav-number">3.5.</span> <span class="nav-text">建立回归模型流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归模型的特点"><span class="nav-number">3.6.</span> <span class="nav-text">回归模型的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一元线性回归"><span class="nav-number">4.</span> <span class="nav-text">一元线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一元线性回归模型"><span class="nav-number">4.1.</span> <span class="nav-text">一元线性回归模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘估计"><span class="nav-number">4.2.</span> <span class="nav-text">最小二乘估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然估计"><span class="nav-number">4.3.</span> <span class="nav-text">最大似然估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有偏估计与无偏估计"><span class="nav-number">4.4.</span> <span class="nav-text">有偏估计与无偏估计</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">无痕</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info"> 技术 &mdash; 从来不会停下脚步</div>
+
+
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66553828";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("U7exMAQ1lNj4ICGMDPFnDgaw-gzGzoHsz", "DSdIdzWc8Mw1kIzGFNUTCPi6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
