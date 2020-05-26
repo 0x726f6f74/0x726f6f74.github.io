@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c语言,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Bing's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="shell操作基本格式123456#!/bin/bash   #执行shell的脚本程序# 注释str=&amp;quot;hello world&amp;quot;echo &amp;quot;sdf&amp;quot; \  #其中&amp;quot;\&amp;quot;为换行符号# 输出helloworldecho $str  shell中的特殊字符12345678910111213141516# 通配符*:匹配一个或者多个?:匹配任意">
+<meta name="keywords" content="c语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c-基础1">
+<meta property="og:url" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/index.html">
+<meta property="og:site_name" content="Bing&#39;s blog">
+<meta property="og:description" content="shell操作基本格式123456#!/bin/bash   #执行shell的脚本程序# 注释str=&amp;quot;hello world&amp;quot;echo &amp;quot;sdf&amp;quot; \  #其中&amp;quot;\&amp;quot;为换行符号# 输出helloworldecho $str  shell中的特殊字符12345678910111213141516# 通配符*:匹配一个或者多个?:匹配任意">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/62BA3820-9ADC-47EE-8CB1-36F70466D080.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/294188F2-D590-4F2C-AE8F-17510E6E3FA8.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/07E049A3-DAB8-41CA-80B9-A1AA1F06FB50.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/E843C427-F6A4-4ACE-B4D4-FC7F64D9DE2D.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/3AC7BFFC-5D1E-45AB-842D-A09C7BC5C790.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/D5D9C59B-6260-4771-9FD9-A77B75FF2B66.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/F4278209-2693-4695-A004-DE70755C8272.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/AFB740E8-126C-45C4-B21B-9F3173380A46.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/B047D092-243F-4C17-9343-2A351204BD4E.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/B9046458-66AB-4BE6-A5B0-3CC1F15CBEB1.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/9416B537-CE86-4F11-BDA6-B269C4E914B9.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/E36FE894-D32C-4A80-A23E-6F263843AD8E.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/972AB2A7-0A5F-40A3-ACC3-ED69428F6C19.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/4A1A6D99-25B0-4751-88F7-54BBB4141E83.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/720B84DF-1D3C-4FBC-845E-4A9B292CC746.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/CCABDDD3-FFE0-4041-9EFA-003B58143B5C.png">
+<meta property="og:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/0466B530-2805-4D73-9C23-1778A6414EC9.png">
+<meta property="og:updated_time" content="2020-05-26T02:05:59.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c-基础1">
+<meta name="twitter:description" content="shell操作基本格式123456#!/bin/bash   #执行shell的脚本程序# 注释str=&amp;quot;hello world&amp;quot;echo &amp;quot;sdf&amp;quot; \  #其中&amp;quot;\&amp;quot;为换行符号# 输出helloworldecho $str  shell中的特殊字符12345678910111213141516# 通配符*:匹配一个或者多个?:匹配任意">
+<meta name="twitter:image" content="https://0x726f6f74.github.io/2018/05/26/c-基础1/62BA3820-9ADC-47EE-8CB1-36F70466D080.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://0x726f6f74.github.io/2018/05/26/c-基础1/">
+
+
+
+
+
+  <title>c-基础1 | Bing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everything is possible</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://0x726f6f74.github.io/2018/05/26/c-基础1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar_m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">c-基础1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T09:35:27+08:00">
+                2018-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/26/c-基础1/" class="leancloud_visitors" data-flag-title="c-基础1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="shell操作"><a href="#shell操作" class="headerlink" title="shell操作"></a>shell操作</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash   #执行shell的脚本程序</span><br><span class="line"># 注释</span><br><span class="line">str=&quot;hello world&quot;</span><br><span class="line">echo &quot;sdf&quot; \  #其中&quot;\&quot;为换行符号</span><br><span class="line"># 输出helloworld</span><br><span class="line">echo $str</span><br></pre></td></tr></table></figure>
+
+<h3 id="shell中的特殊字符"><a href="#shell中的特殊字符" class="headerlink" title="shell中的特殊字符"></a>shell中的特殊字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 通配符</span><br><span class="line">*:匹配一个或者多个</span><br><span class="line">?:匹配任意一个字符</span><br><span class="line">[]:匹配方括号中限定的任意一个字符</span><br><span class="line">!:表示方括号中列出的字符以外的其它字符</span><br><span class="line"></span><br><span class="line"># 引号</span><br><span class="line">双引号：由双引号扩起来的字符，除了$,反引号`,反斜杠\ 保留其特殊功能，其它字符均作为普通字符对待。如一下:</span><br><span class="line">    echo &quot;current dir is: `pwd`&quot;</span><br><span class="line">单引号：</span><br><span class="line">反引号：</span><br><span class="line"></span><br><span class="line"># 输入输出重定向符号</span><br><span class="line">&gt;:标准输入重定向</span><br><span class="line">&lt;:标准输出重定向</span><br><span class="line">&gt;&gt;:追加内容在后面，而不破坏文件原有的内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="shell中变量的使用"><a href="#shell中变量的使用" class="headerlink" title="shell中变量的使用"></a>shell中变量的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#对变量进行赋值，等号两边不能有空格</span><br><span class="line">str=&quot;sdfh&quot;</span><br><span class="line">echo $str</span><br><span class="line">#如果出现了混淆，前面有定义str，可以使用括号来区分</span><br><span class="line">echo $(str) --这个语法有点问题</span><br><span class="line">unset str #清除变量</span><br><span class="line"></span><br><span class="line">$0:脚本名称</span><br><span class="line">$#:命令行参数个数</span><br><span class="line">$*:所有命令行参数</span><br><span class="line">$[1-n]:第1-n个命令行参数</span><br><span class="line">$!:后台运行的最后一个进程的标识符</span><br><span class="line">$$:当前进程标识符</span><br><span class="line">$?:命令的退出状态，0表示没有错误</span><br></pre></td></tr></table></figure>
+
+<h3 id="条件测试"><a href="#条件测试" class="headerlink" title="条件测试"></a>条件测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">注意：</span><br><span class="line">[ ]  可以使用 -a, -o的参数，但是必须在 [ ] 中括号内，判断条件;</span><br><span class="line">[ -z &quot;$pid&quot; ]  单对中括号变量必须要加双引号</span><br><span class="line">[[ -z $pid ]]   双对括号，变量不用加双引号</span><br><span class="line">expr: 命令可以实现数值运算、数值或字符串比较、字符串匹配、字符串提取、字符串长度计算等功能。它还具有几个特殊功能，判断变量或参数是否为整数、是否为空、是否为0等。</span><br><span class="line"></span><br><span class="line">字符串测试符:</span><br><span class="line">=:两个字符串相等</span><br><span class="line">!=:两个字符串不相等</span><br><span class="line">-z:字符串为空</span><br><span class="line">-n:字符串不为空</span><br><span class="line"></span><br><span class="line">数值测试符:</span><br><span class="line">-eq:两个数相等</span><br><span class="line">-ne:两个数不相等</span><br><span class="line">-gt:第一个数大于第二个数</span><br><span class="line">-lt:第一个数小于第二个数</span><br><span class="line">-le:第一个数小于等于第二个数</span><br><span class="line">-ge:第一个数大于等于第二个数</span><br><span class="line"></span><br><span class="line">文件状态测试:</span><br><span class="line">-f:是否为普通文件</span><br><span class="line">-d:是否为目录</span><br><span class="line">-c:是否为字符设备文件</span><br><span class="line">-b:是否为块设备文件</span><br><span class="line">-s:文件是否为零</span><br><span class="line">-r:用户对文件是否有读权限</span><br><span class="line">-w:用户对文件是否有写权限</span><br><span class="line">-x:用户对文件是否有执行权限</span><br><span class="line"></span><br><span class="line">逻辑操作:</span><br><span class="line">-a:逻辑与</span><br><span class="line">-o:逻辑或</span><br><span class="line">!:逻辑非</span><br></pre></td></tr></table></figure>
+
+<h3 id="shell中的结构控制语句"><a href="#shell中的结构控制语句" class="headerlink" title="shell中的结构控制语句"></a>shell中的结构控制语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># if语句:</span><br><span class="line">if 提交1</span><br><span class="line">then </span><br><span class="line">    命令1</span><br><span class="line">elif 条件2</span><br><span class="line">then</span><br><span class="line">    命令2</span><br><span class="line">else</span><br><span class="line">    命令3</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># case语句</span><br><span class="line">case 字符串 in</span><br><span class="line">模式1）</span><br><span class="line">    命令1</span><br><span class="line">    ;;</span><br><span class="line">模式2)</span><br><span class="line">    命令2</span><br><span class="line">    ;;</span><br><span class="line">*)</span><br><span class="line">    命令n</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p><img src="62BA3820-9ADC-47EE-8CB1-36F70466D080.png" alt="29e10457dd9fdad52d7bb4ac55163041"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for循环语句</span></span><br><span class="line"><span class="keyword">for</span> 变量名 <span class="keyword">in</span> [列表]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    命令1</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> l3 <span class="keyword">in</span> A B C</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$l3</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> `seq 1 10`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$x</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">seq选项：</span><br><span class="line">-s:指定分隔符，默认为换行符</span><br><span class="line">-w:等宽输出，位数不足的前面补0</span><br><span class="line">-f:格式化输出</span><br><span class="line"></span><br><span class="line"><span class="comment"># while循环[条件成立，则循环]</span></span><br><span class="line">counter=1</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$counter</span> -lt 3 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    counter=`expr <span class="variable">$counter</span> + 1` <span class="comment">#数值累加</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$counter</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">"请输入一个数字："</span></span><br><span class="line"><span class="built_in">read</span> IN <span class="comment">#读取数字</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># util循环[条件不成立，则循环]</span></span><br><span class="line">util 条件</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    命令1</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">break</span>:跳出循环</span><br><span class="line"><span class="built_in">continue</span>:跳出当前循环，执行下一次循环</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义shell函数"><a href="#定义shell函数" class="headerlink" title="定义shell函数"></a>定义shell函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sum() </span><br><span class="line">&#123;</span><br><span class="line"> SUM=`expr <span class="variable">$1</span> + <span class="variable">$2</span>`</span><br><span class="line"> <span class="built_in">echo</span> <span class="variable">$SUM</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">"请输入两个数字："</span></span><br><span class="line"><span class="built_in">read</span> x y <span class="comment">#读取数字</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">"<span class="variable">$x</span> + <span class="variable">$y</span> = "</span></span><br><span class="line">sum <span class="variable">$x</span> <span class="variable">$y</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="c语言介绍"><a href="#c语言介绍" class="headerlink" title="c语言介绍"></a>c语言介绍</h2><p>C语言主要用于底层开发，例如：<br>Windows、Linux、Unix 等操作系统的内核90%以上都使用C语言开发；<br>开发硬件驱动，让硬件和操作系统连接起来，这样用户才能使用硬件、程序员才能控制硬件；<br>单片机和嵌入式属于软硬件的结合，有很多使用C语言的地方；<br>开发系统组件或服务，用于支撑上层应用；<br>编写PHP扩展，增强PHP的功能；<br>如果对软件某个模块（例如算法和搜索部分）的效率要求较高，也可以使用C语言来开发。</p>
+<p>既然C语言能做这么多事情，为什么很多初学者学完C语言以后仍然非常迷茫，只能编写没有界面的控制台程序呢？</p>
+<p>这是因为，C语言仅仅是一个工具，它的标准库也很简单，只提供了最基本的功能，如果希望开发出实用的程序，往往还需要学习其他方面的知识。例如：<br>开发硬件驱动要学习数字电路，了解 Windows 或 Linux 内核，阅读硬件厂商的接口说明书；<br>从事嵌入式开发要学习数字电路、模拟电路、ARM、Linux、Qt等；<br>开发PC软件要学习Windows编程，了解 GTK。</p>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><blockquote>
+<p>语法，注释</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span>  <span class="comment">//argc参数个数，argv参数数组</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 执行系统命令</span></span><br><span class="line">    system(<span class="string">"start calc"</span>);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="294188F2-D590-4F2C-AE8F-17510E6E3FA8.png" alt="f58784b9f83bde77fa2c6985d3ce72dd"></p>
+<p>c语言大致可以分为两类：一类为说明语句，用来描述数据，决定内存的分配；另一类为执行语句，用来对数据进行操作，决定内存的内容；</p>
+<p>注意：c语言区分大小写，关键字都必须使用小写字母</p>
+<blockquote>
+<p>转义字符</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\a      响铃</span><br><span class="line">\b      退格</span><br><span class="line">\f      换页</span><br><span class="line">\n</span><br><span class="line">\r</span><br><span class="line">\t      水平制表</span><br><span class="line">\v      垂直制表</span><br><span class="line">\\</span><br><span class="line">\'</span><br><span class="line">\<span class="string">"</span></span><br><span class="line"><span class="string">\0      空字符</span></span><br><span class="line"><span class="string">\ddd</span></span><br><span class="line"><span class="string">\xhh    1到2位十六进制所代表的任意字符</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>基本类型：char,int,float,double,void(空值型)<br>聚合类型：数组，结构，联合和枚举等<br>各种数据类型转化；</p>
+<h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">类型	存储大小	值范围</span><br><span class="line"><span class="keyword">char</span>	<span class="number">1</span> 字节	<span class="number">-128</span> 到 <span class="number">127</span> 或 <span class="number">0</span> 到 <span class="number">255</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span>	<span class="number">1</span> 字节	<span class="number">0</span> 到 <span class="number">255</span></span><br><span class="line"><span class="keyword">signed</span> <span class="keyword">char</span>	<span class="number">1</span> 字节	<span class="number">-128</span> 到 <span class="number">127</span></span><br><span class="line"><span class="keyword">int</span>	<span class="number">2</span> 或 <span class="number">4</span> 字节	<span class="number">-32</span>,<span class="number">768</span> 到 <span class="number">32</span>,<span class="number">767</span> 或 <span class="number">-2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">648</span> 到 <span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">647</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span>	<span class="number">2</span> 或 <span class="number">4</span> 字节	<span class="number">0</span> 到 <span class="number">65</span>,<span class="number">535</span> 或 <span class="number">0</span> 到 <span class="number">4</span>,<span class="number">294</span>,<span class="number">967</span>,<span class="number">295</span></span><br><span class="line"><span class="keyword">short</span>	<span class="number">2</span> 字节	<span class="number">-32</span>,<span class="number">768</span> 到 <span class="number">32</span>,<span class="number">767</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span>	<span class="number">2</span> 字节	<span class="number">0</span> 到 <span class="number">65</span>,<span class="number">535</span></span><br><span class="line"><span class="keyword">long</span>	<span class="number">4</span> 字节	<span class="number">-2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">648</span> 到 <span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">647</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span>	<span class="number">4</span> 字节	<span class="number">0</span> 到 <span class="number">4</span>,<span class="number">294</span>,<span class="number">967</span>,<span class="number">295</span></span><br><span class="line"></span><br><span class="line">类型	存储大小	值范围	精度</span><br><span class="line"><span class="keyword">float</span>	<span class="number">4</span> 字节	<span class="number">1.2E-38</span> 到 <span class="number">3.4E+38</span>	<span class="number">6</span> 位小数</span><br><span class="line"><span class="keyword">double</span>	<span class="number">8</span> 字节	<span class="number">2.3E-308</span> 到 <span class="number">1.7E+308</span>	<span class="number">15</span> 位小数</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">double</span>	<span class="number">16</span> 字节	<span class="number">3.4E-4932</span> 到 <span class="number">1.1E+4932</span>	<span class="number">19</span> 位小数</span><br></pre></td></tr></table></figure>
+
+<p>sizeof: 获取一个数据类型的宽度。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d/n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">float</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>getconf命令[bash命令]：查看处理器的字长，也可以查看其它参数，如整形数据的取值范围</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getconf LONG_BIT    <span class="comment">#查看处理器字长</span></span><br><span class="line">getconf WORD_BIT    </span><br><span class="line">getconf INT_MAX</span><br><span class="line">getconf详解：https://www.cnblogs.com/MYSQLZOUQI/p/5552238.html</span><br><span class="line"></span><br><span class="line">CPU寻址能力 = 2^S (s为地址总线宽度） &lt;= CPU位数</span><br></pre></td></tr></table></figure>
+
+<p><img src="07E049A3-DAB8-41CA-80B9-A1AA1F06FB50.png" alt="0a60541d2ea366ba429dc9c10d6ba952"></p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组分一维数组和多维数组，最常用的为而为数组；</p>
+<p>一维数组初始化</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">数组名称[下标]</span><br><span class="line"><span class="built_in">array</span>[<span class="number">0</span>], <span class="built_in">array</span>[<span class="number">1</span>], <span class="built_in">array</span>[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">int</span> x[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; </span><br><span class="line"><span class="keyword">int</span> x[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; </span><br><span class="line"><span class="keyword">int</span> x[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;        <span class="comment">//没有赋值的int为0，字符串为空</span></span><br><span class="line"><span class="keyword">int</span> x[<span class="number">5</span>] = &#123; ,<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="E843C427-F6A4-4ACE-B4D4-FC7F64D9DE2D.png" alt="cb4e2801f969e2b27f6fdc3e21455073"></p>
+<p>二维数组和多维数组初始化<br><img src="3AC7BFFC-5D1E-45AB-842D-A09C7BC5C790.png" alt="6503e66871989a9788a2dfc46b458426"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>];    #先定义后赋值</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125; #定义并初始化数据</span><br><span class="line"><span class="keyword">int</span> a[][<span class="number">3</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D5D9C59B-6260-4771-9FD9-A77B75FF2B66.png" alt="445c6c82609ed2cd09837c86c3bbb650"></p>
+<p><img src="F4278209-2693-4695-A004-DE70755C8272.png" alt="1b1fec90b9112d602ac724b40625e601"></p>
+<p>参考练习：<a href="https://www.cnblogs.com/lixiaomingr/p/7918646.html" target="_blank" rel="noopener">https://www.cnblogs.com/lixiaomingr/p/7918646.html</a></p>
+<h3 id="常用运算符"><a href="#常用运算符" class="headerlink" title="常用运算符"></a>常用运算符</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>算法运算符</span><br><span class="line">+, -, *, /, %(取余), ++(自增), --(自减)</span><br><span class="line">++x     #等于x=x+<span class="number">1</span></span><br><span class="line">--x</span><br><span class="line">x++     #和上面的区别是：先赋值后自增</span><br><span class="line">x--</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>关系和逻辑运算符</span><br><span class="line">关系运算符: &gt;, &lt;, ==, &gt;=, &lt;=, !=</span><br><span class="line">逻辑运算符: &amp;&amp;, ||, !</span><br><span class="line">关系和逻辑运算符关键概念都是返回真或者假</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>位操作符(二进制底层操作)：</span><br><span class="line">&amp;, | , ^(异或), ~(取反), &lt;&lt;(左移), &gt;&gt;(右移)</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>条件运算符</span><br><span class="line">运算量<span class="number">1</span> ? 运算量<span class="number">2</span> : 运算量<span class="number">3</span></span><br><span class="line">*先计算运算量<span class="number">1</span>，为真执行运算量<span class="number">2</span>，为假执行运算量<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="AFB740E8-126C-45C4-B21B-9F3173380A46.png" alt="37c2a5b1fef6cbd7693a355890c3fe68"></p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量是固定值，在程序执行期间不会改变。这些固定的值，又叫做字面量。<br>常量可以是任何的基本数据类型，比如整数常量、浮点常量、字符常量，或字符串字面值，也有枚举常量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">212</span>         <span class="comment">/* 合法的 */</span></span><br><span class="line"><span class="number">215u</span>        <span class="comment">/* 合法的 */</span></span><br><span class="line"><span class="number">0xFee</span>L      <span class="comment">/* 合法的 */</span></span><br><span class="line"><span class="number">078</span>         <span class="comment">/* 非法的：8 不是八进制的数字 */</span></span><br><span class="line"><span class="number">032U</span>U       <span class="comment">/* 非法的：不能重复后缀 */</span></span><br><span class="line"></span><br><span class="line">以下是各种类型的整数常量的实例：</span><br><span class="line"><span class="number">85</span>         <span class="comment">/* 十进制 */</span></span><br><span class="line"><span class="number">0213</span>       <span class="comment">/* 八进制 */</span></span><br><span class="line"><span class="number">0x4b</span>       <span class="comment">/* 十六进制 */</span></span><br><span class="line"><span class="number">30</span>         <span class="comment">/* 整数 */</span></span><br><span class="line"><span class="number">30u</span>        <span class="comment">/* 无符号整数 */</span></span><br><span class="line"><span class="number">30l</span>        <span class="comment">/* 长整数 */</span></span><br><span class="line"><span class="number">30u</span>l       <span class="comment">/* 无符号长整数 */</span></span><br><span class="line"></span><br><span class="line">下面列举几个浮点常量的实例：</span><br><span class="line"><span class="number">3.14159</span>       <span class="comment">/* 合法的 */</span></span><br><span class="line"><span class="number">314159E-5</span>L    <span class="comment">/* 合法的 */</span></span><br><span class="line"><span class="number">510</span>E          <span class="comment">/* 非法的：不完整的指数 */</span></span><br><span class="line"><span class="number">210f</span>          <span class="comment">/* 非法的：没有小数或指数 */</span></span><br><span class="line">.e55          <span class="comment">/* 非法的：缺少整数或分数 */</span></span><br></pre></td></tr></table></figure>
+
+<p>在 C 中，有两种简单的定义常量的方式：<br>使用 #define 预处理器。<br>使用 const 关键字。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LENGTH 10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WIDTH  5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NEWLINE <span class="meta-string">'\n'</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> area;  </span><br><span class="line">  </span><br><span class="line">   area = LENGTH * WIDTH;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"value of area : %d"</span>, area);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%c"</span>, NEWLINE);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">int</span>  LENGTH = <span class="number">10</span>;</span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">int</span>  WIDTH  = <span class="number">5</span>;</span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">char</span> NEWLINE = <span class="string">'\n'</span>;</span><br><span class="line">   <span class="keyword">int</span> area;  </span><br><span class="line"></span><br><span class="line">   area = LENGTH * WIDTH;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"value of area : %d"</span>, area);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%c"</span>, NEWLINE);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量其实只不过是程序可操作的存储区的名称。C中每个变量都有特定的类型，类型决定了变量存储的大小和布局，该范围内的值都可以存储在内存中，运算符可应用于变量上。</p>
+<p>变量的名称可以由字母、数字和下划线字符组成。它必须以字母或下划线开头。大写字母和小写字母是不同的，因为 C 是大小写敏感的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">变量的声明有两种情况：</span><br><span class="line"><span class="number">1</span>、一种是需要建立存储空间的。例如：<span class="keyword">int</span> a 在声明的时候就已经建立了存储空间。</span><br><span class="line"><span class="number">2</span>、另一种是不需要建立存储空间的，通过使用<span class="keyword">extern</span>关键字声明变量名而不定义它。 例如：<span class="keyword">extern</span> <span class="keyword">int</span> a 其中变量 a 可以在别的文件中定义的。</span><br><span class="line">除非有<span class="keyword">extern</span>关键字，否则都是变量的定义。</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i; <span class="comment">//声明，不是定义</span></span><br><span class="line"><span class="keyword">int</span> i; <span class="comment">//声明，也是定义</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="表达式语句"><a href="#表达式语句" class="headerlink" title="表达式语句"></a>表达式语句</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="keyword">if</span>/<span class="keyword">switch</span>语句</span><br><span class="line"><span class="keyword">if</span>(表达式)</span><br><span class="line">&#123;</span><br><span class="line">    语句<span class="number">1</span></span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    语句<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(表达式)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">1</span>:</span><br><span class="line">        语句<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>循环语句(<span class="keyword">for</span>, <span class="keyword">while</span>, <span class="keyword">do</span>...<span class="keyword">while</span>)</span><br><span class="line"><span class="keyword">for</span>(表达式<span class="number">1</span>; 表达式<span class="number">2</span>; 表达式<span class="number">3</span>)</span><br><span class="line">&#123;</span><br><span class="line">    语句;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(表达式)</span><br><span class="line">&#123;</span><br><span class="line">    语句;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    语句;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (表达式)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>跳转语句(<span class="keyword">goto</span>, <span class="keyword">continue</span>, <span class="keyword">break</span>)</span><br><span class="line"><span class="keyword">goto</span> 语句标号；</span><br><span class="line">include <span class="string">"stdio.h"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">goto</span> l1;</span><br><span class="line">    x=<span class="number">1</span>;</span><br><span class="line">    l1:<span class="built_in">printf</span>(<span class="string">"x = %d\n"</span>, x);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="B047D092-243F-4C17-9343-2A351204BD4E.png" alt="9433dc4dc9af26e00b1888b5fa911add"></p>
+<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>1.宏定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> 宏名 字符串</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> 宏名(带参数) 字符串</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(m,n) (m&gt;n)?m:n</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>文件包含</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;文件名&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>条件编译</span><br><span class="line">条件编译用于增强程序的可移植性。可以根据编译环境的不同而采取不同的编译方式。可以是目标程序变小，运行速度变快。</span><br></pre></td></tr></table></figure>
+
+<p><img src="B9046458-66AB-4BE6-A5B0-3CC1F15CBEB1.png" alt="4d6100e93b5d2a1936d6f61decfd06db"><br><img src="9416B537-CE86-4F11-BDA6-B269C4E914B9.png" alt="1d55052619d9ac472b3fc705cf04fecc"></p>
+<h3 id="存储类"><a href="#存储类" class="headerlink" title="存储类"></a>存储类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> 只能用在函数内，即 <span class="keyword">auto</span> 只能修饰局部变量。</span><br><span class="line"></span><br><span class="line"><span class="keyword">register</span> 存储类用于定义存储在寄存器中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 <span class="string">'&amp;'</span> 运算符（因为它没有内存位置）。</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 <span class="keyword">static</span> 修饰局部变量可以在函数调用之间保持局部变量的值。 <span class="keyword">static</span> 修饰符也可以应用于全局变量。</span><br><span class="line"></span><br><span class="line">extern 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当您使用 'extern' 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数返回"><a href="#函数返回" class="headerlink" title="函数返回"></a>函数返回</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>函数返回为空: C 中有各种函数都不返回值，或者您可以说它们返回空。不返回值的函数的返回类型为空。例如 <span class="function"><span class="keyword">void</span> <span class="title">exit</span> <span class="params">(<span class="keyword">int</span> status)</span></span>;</span><br><span class="line"><span class="number">2.</span>函数参数为空: C 中有各种函数不接受任何参数。不带参数的函数可以接受一个 <span class="keyword">void</span>。例如 <span class="function"><span class="keyword">int</span> <span class="title">rand</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="number">3.</span>指针指向 <span class="keyword">void</span>: 类型为 <span class="keyword">void</span> * 的指针代表对象的地址，而不是类型。例如，内存分配函数 <span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">( <span class="keyword">size_t</span> size )</span></span>; 返回指向 <span class="keyword">void</span> 的指针，可以转换为任何数据类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="linux创建子进程"><a href="#linux创建子进程" class="headerlink" title="linux创建子进程"></a>linux创建子进程</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;  /* 相关头文件 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    <span class="keyword">int</span> sta;</span><br><span class="line">    pid = fork();   <span class="comment">//fork函数用于复制当前进程内容，在父进程中返回0，子进程中返回pid进程号,失败为-1</span></span><br><span class="line">    <span class="keyword">if</span>(pid &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"fork error.\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pid == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Child Process: \n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"pid = %d\n"</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"ppid = %d\n"</span>, getppid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"gid = %d\n"</span>, getpgrp());</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Parent Process: \n"</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"pid = %d\n"</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"ppid = %d\n"</span>, getppid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"gid = %d\n"</span>, getpgrp());</span><br><span class="line">        <span class="keyword">if</span>(pid != wait(&amp;sta))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"wait error.\n"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="E36FE894-D32C-4A80-A23E-6F263843AD8E.png" alt="bfbe00413d675be8d142871eb47c181a"><br><img src="972AB2A7-0A5F-40A3-ACC3-ED69428F6C19.png" alt="874af509b4bd24d3ab4c2d282669d85f"></p>
+<h3 id="linux创建守护进程"><a href="#linux创建守护进程" class="headerlink" title="linux创建守护进程"></a>linux创建守护进程</h3><p><img src="4A1A6D99-25B0-4751-88F7-54BBB4141E83.png" alt="29cc41ae914dce956d3c3eb203876600"><br><img src="720B84DF-1D3C-4FBC-845E-4A9B292CC746.png" alt="8846e96257166a4c355316e6418302a4"><br><img src="CCABDDD3-FFE0-4041-9EFA-003B58143B5C.png" alt="b35108855ad732736ba4be305295f27a"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="linux进程间的通信"><a href="#linux进程间的通信" class="headerlink" title="linux进程间的通信"></a>linux进程间的通信</h3><h4 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h4><p><img src="0466B530-2805-4D73-9C23-1778A6414EC9.png" alt="e5ca924ce8164340bc544cb9a96a9b7e"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFSIZE 256</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> cpid;</span><br><span class="line">    <span class="keyword">int</span> fifod[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> sta;</span><br><span class="line">    <span class="keyword">char</span> buf[BUFSIZE] = <span class="string">"Linux c is very good!!!"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(pipe(fifod) &lt; <span class="number">0</span>) &#123;           <span class="comment">// 创建匿名管道</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"ppe error.\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cpid = fork();                  <span class="comment">// 创建子进程</span></span><br><span class="line">    <span class="keyword">if</span>(cpid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"fork error.\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"First cpid: %d, ppid: %d\n"</span>, cpid, getppid() );</span><br><span class="line">    <span class="keyword">if</span>(cpid == <span class="number">0</span> ) &#123;                <span class="comment">/* 子进程 */</span></span><br><span class="line">        close(fifod[<span class="number">0</span>]);                            <span class="comment">// 关闭读取管道</span></span><br><span class="line">        write(fifod[<span class="number">1</span>], buf, <span class="keyword">sizeof</span>(buf));          <span class="comment">// 向写入管道中写入数据</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        close(fifod[<span class="number">1</span>]);             <span class="comment">// 关闭父进程管道</span></span><br><span class="line">        read(fifod[<span class="number">0</span>], buf, <span class="keyword">sizeof</span>(buf));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Received message from child process:\n%s\n"</span>, buf);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Second cpid: %d, ppid: %d\n"</span>, cpid, getppid() );</span><br><span class="line">        <span class="keyword">if</span>(cpid != wait(&amp;sta))&#123;      <span class="comment">// 等待子进程结束</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"wait error.\n"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Third cpid: %d, ppid: %d\n"</span>, cpid, getppid() );</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h3><p><a href="https://cloud.tencent.com/developer/news/148736" target="_blank" rel="noopener">https://cloud.tencent.com/developer/news/148736</a><br>学到了数组和指针, 数据之间的类型转换，数据合并，分割，截取等操作<br>线程,内存分配，堆，栈,常用的类</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>printf 不管什么类型的值都按照 %d %f %u %lld 的类型输出(不会进行类型转换，直接输出乱码)，如果不是相同类型需要进行强制类型转化；<br>for example:<br>printf(“test~~%d”,(int)10.3)<br>Notice: num=1  and  num=”1”   一个是数字一个是字符</p>
+<p>计算机数据都是按照补码的方式存储在内存里面；（补码是在反码的基础上加1；正数的原码和反码和补码都一样）<br>符号：<br>~ 数据在内存二进制的数字取反（如：~74）<br>&lt;&lt; 左移（用于内存二进制数,ch&lt;&lt;1,如：ch的值左移1一位;但不会改变ch的值,如果要改值需要赋值）</p>
+<p>字符类型：<br>*p 指针占4个字节（也就是32位） 0000     0000     0000     0000     0000     0000     0000     0000<br>char类型1个字节(也就是8位)0000     0000<br>&amp; 计算：只要有一个为0，其结果就为0<br>| 和^ 或和异或：只要有一个为1，其结果为1;(异或有个差别就是两个都为1时，其结果为0)<br>&lt;&lt;= 符合运算符：相当于左移数据后并赋值<br>&amp;=  for example:<br>int ch = 4<br>ch &amp;=1   等于 ch= ch&amp;1(也是二进制数据对比,就是ch的二进制与1的二进制进行&amp;运算)<br>位运算只能操作整数和字符，不适用于实数运算，实数是以指数的方式表示<br>无符号（整数）的数据在进行位运算的时候，需要自动进行转换:<br>低字节向高字节转换的时候，会自动填充0<br>有符号（负数） 在进行位运算的时候，需要自动进行转换:<br>低字节向高字节转换的时候；<br>正数会按照符号位0自动填充0；负数会按照符号位1自动填充1<br>负数在位运算右移的时候会自动填充1，整数填充0；左移都是填充0<br>位“反”、“与”、“或”、“异或”运算符不关心操作数的符号，知识按操作数所在字节的0、1序列进行对比，符号位会被当成普通的0或1进行处理</p>
+<p>|
+1|1 1 0|1 0<br>1|0 1 0|0 0</p>
+<p>端口扫描样本:<br><a href="http://blog.csdn.net/u011721501/article/details/38642133" target="_blank" rel="noopener">http://blog.csdn.net/u011721501/article/details/38642133</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="Bing 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://0x726f6f74.github.io/2018/05/26/c-基础1/" title="c-基础1">https://0x726f6f74.github.io/2018/05/26/c-基础1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href rel="external nofollow" target="_blank"></a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c语言/" rel="tag"># c语言</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/28/java-运算符/" rel="prev" title="java-运算符">
+                java-运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTcyNS8xNjI1Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar_m.jpg" alt="Bing">
+            
+              <p class="site-author-name" itemprop="name">Bing</p>
+              <p class="site-description motion-element" itemprop="description">web & binary & dev.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/0xbing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/xstormbing" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell操作"><span class="nav-number">1.</span> <span class="nav-text">shell操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本格式"><span class="nav-number">1.1.</span> <span class="nav-text">基本格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell中的特殊字符"><span class="nav-number">1.2.</span> <span class="nav-text">shell中的特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell中变量的使用"><span class="nav-number">1.3.</span> <span class="nav-text">shell中变量的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件测试"><span class="nav-number">1.4.</span> <span class="nav-text">条件测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell中的结构控制语句"><span class="nav-number">1.5.</span> <span class="nav-text">shell中的结构控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义shell函数"><span class="nav-number">1.6.</span> <span class="nav-text">定义shell函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c语言介绍"><span class="nav-number">2.</span> <span class="nav-text">c语言介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础"><span class="nav-number">2.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">2.2.2.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用运算符"><span class="nav-number">2.3.</span> <span class="nav-text">常用运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">2.4.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.5.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式语句"><span class="nav-number">2.6.</span> <span class="nav-text">表达式语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预处理"><span class="nav-number">2.7.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储类"><span class="nav-number">2.8.</span> <span class="nav-text">存储类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数返回"><span class="nav-number">2.9.</span> <span class="nav-text">函数返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux创建子进程"><span class="nav-number">2.10.</span> <span class="nav-text">linux创建子进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux创建守护进程"><span class="nav-number">2.11.</span> <span class="nav-text">linux创建守护进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux进程间的通信"><span class="nav-number">2.12.</span> <span class="nav-text">linux进程间的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管道"><span class="nav-number">2.12.1.</span> <span class="nav-text">管道</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#todo"><span class="nav-number">2.13.</span> <span class="nav-text">todo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">3.</span> <span class="nav-text">其它</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">无痕</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info"> 技术 &mdash; 从来不会停下脚步</div>
+
+
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66553828";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("U7exMAQ1lNj4ICGMDPFnDgaw-gzGzoHsz", "DSdIdzWc8Mw1kIzGFNUTCPi6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
